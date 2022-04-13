@@ -22,7 +22,7 @@ module Spree
     end
 
     def user_roles(user)
-      (roles = user.roles.includes(:permissions)).empty? ? Spree::Role.default_role.includes(:permissions) : roles
+      (roles = user.roles.includes(:permissions)).empty? ? Spree::Role.default_role_scope.includes(:permissions) : roles
     end
   end
 end

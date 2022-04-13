@@ -652,8 +652,8 @@ RSpec.describe Spree::Ability, type: :model do
         allow(roles).to receive(:includes).and_return(roles)
       end
 
-      it 'should not receive default_role on Spree::Role' do
-        expect(Spree::Role).to_not receive(:default_role)
+      it 'should not receive default_role_scope on Spree::Role' do
+        expect(Spree::Role).to_not receive(:default_role_scope)
         ability.user_roles(user)
       end
 
@@ -681,7 +681,7 @@ RSpec.describe Spree::Ability, type: :model do
         role.is_default = true
         role.save!
         user.roles = empty_roles
-        allow(Spree::Role).to receive(:default_role).and_return(roles)
+        allow(Spree::Role).to receive(:default_role_scope).and_return(roles)
         allow(roles).to receive(:includes).and_return(roles)
         allow(user).to receive(:roles).and_return(empty_roles)
         allow(empty_roles).to receive(:includes).and_return(empty_roles)
@@ -697,8 +697,8 @@ RSpec.describe Spree::Ability, type: :model do
         ability.user_roles(user)
       end
 
-      it 'should receive default_role on Spree::Role' do
-        expect(Spree::Role).to receive(:default_role).and_return(roles)
+      it 'should receive default_role_scope on Spree::Role' do
+        expect(Spree::Role).to receive(:default_role_scope).and_return(roles)
         ability.user_roles(user)
       end
 
